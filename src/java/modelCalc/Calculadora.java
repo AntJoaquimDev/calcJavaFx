@@ -17,7 +17,7 @@ public class Calculadora {
     @Column(name = "valor2",length = 20,nullable = false)
     private double valor2;
     @Column(name = "resultado",length = 20,nullable = false)
-    private String resultado;
+    private double resultado;
 
     public int getId() {
         return id;
@@ -51,11 +51,11 @@ public class Calculadora {
         this.valor2 = valor2;
     }
 
-    public String getResultado() {
+    public double getResultado() {
         return resultado;
     }
 
-    public void setResultado(String resultado) {
+    public void setResultado(double resultado) {
         this.resultado = resultado;
     }
 }

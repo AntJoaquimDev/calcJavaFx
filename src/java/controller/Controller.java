@@ -2,18 +2,29 @@ package controller;
 
 import calUltil.MaskCampoCalc;
 import calUltil.ValidarCampos;
+import calcDao.CrudGenecDao;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import modelCalc.Calculadora;
+import sun.font.DelegatingShape;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-
+    @FXML
+    private Button btnHistorico;
     @FXML
     private Button btnSete;
 
@@ -68,12 +79,18 @@ public class Controller implements Initializable {
 
     @FXML
     private TextField txfTelaCalc;
+    Calculadora calc = new Calculadora();
+
     double resultado = 0;
     String operacao;
     double valor1 = 0;
     double valor2 = 0;
 
 
+
+    private CrudGenecDao<Calculadora> dao = new CrudGenecDao<>();
+
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         focusTela();
         masckCamp();
@@ -197,7 +214,22 @@ public class Controller implements Initializable {
                 txfTelaCalc.requestFocus();
             }
         });
-       }
+    }
+
+
+
+    @FXML
+    void buscarHistoricos(ActionEvent event) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/ResultCalc.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setTitle("Histórico Calculadora -> Joaquim");
+        stage.setMaximized(false);
+        stage.setScene(scene);
+        stage.show();
+        btnHistorico.getScene().getWindow().hide();
+
+    }
 
     @FXML
     void calcResultado(ActionEvent event) {
@@ -214,21 +246,22 @@ public class Controller implements Initializable {
                 case "-":
                     resultado = valor1 - valor2;
                     txfTelaCalc.setText(String.valueOf(resultado));
-                    System.out.println(resultado);
+
                     break;
                 case "*":
                     resultado = valor1 * valor2;
                     txfTelaCalc.setText(String.valueOf(resultado));
-                    System.out.println(resultado);
+
                     break;
                 case "/":
                     resultado = valor1 / valor2;
                     txfTelaCalc.setText(String.valueOf(resultado));
-                    System.out.println(resultado);
+
                     break;
             }
 
         }
+        SalvarHistorico();
     }
 
     public void limparTootip() {
@@ -238,15 +271,33 @@ public class Controller implements Initializable {
     public void masckCamp() {
         MaskCampoCalc.mskNumero(txfTelaCalc);
     }
-public void focusTela(){
-    txfTelaCalc.requestFocus();
-}
+
+    public void focusTela() {
+        txfTelaCalc.requestFocus();
+    }
+
     public void limparTelaCalc() {
         txfTelaCalc.setText("");
         valor1 = 0;
         valor2 = 0;
         operacao = "";
         txfTelaCalc.requestFocus();
+
+    }
+
+    public void SalvarHistorico(){
+
+        calc.setValor1(valor1);
+        calc.setValor2(valor2);
+        calc.setOperacao(operacao);
+        calc.setResultado(resultado);
+       if ( dao.salvar(calc)){
+            System.out.println("registro salvo");
+        }else{
+            System.out.println("erro registro no salvou");
+        }
+
+
     }
 }
 
