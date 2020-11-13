@@ -8,19 +8,20 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL55Dialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/agendafx?useTimezone=true &amp;serverTimezone=UTC</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/calcjavafx?useTimezone=true &amp;serverTimezone=UTC</property>
        <!-- <property name="hibernate.connection.username">root</property> -->
 
 
         <!-- Visualizar os códigos SQL na compilação -->
-       <!--<property name="hibernate.show_sql">true</property>-->
+       <!-- <property name="hibernate.show_sql">true</property>-->
+
 
       <!-- Formatar a exibição dos dados acima -->
         <property name="hibernate.format_sql">true</property>
 
         <!-- Modo de persistências das tabelas -->
        <!-- <property name="hbm2ddl.auto">create</property>-->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">update </property>
 
     </session-factory>
 </hibernate-configuration>

@@ -36,6 +36,7 @@ public class controllerCalc implements Initializable {
     private CrudGenecDao dao = new CrudGenecDao();
     private ObservableList<Calculadora> observableList = FXCollections.observableArrayList();
     private List<Calculadora> lista;
+    private Calculadora obSelecionado = new Calculadora();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -52,11 +53,7 @@ public class controllerCalc implements Initializable {
         });
         atualizarTabelas();
         criarColunasTabView();
-    }
-
-    @FXML
-    void apagarHistorico(ActionEvent event) {
-        dao.excluir(tbViewCalc);
+        clicarObjeto();
     }
 
     public void chamarTela() throws IOException {
@@ -90,6 +87,7 @@ public class controllerCalc implements Initializable {
     }
 
     public void atualizarTabelas() {
+        observableList.clear();
         lista = dao.consultar("Calculadora");
         for (Calculadora cal : lista) {
             observableList.add(cal);
@@ -98,4 +96,15 @@ public class controllerCalc implements Initializable {
         tbViewCalc.getSelectionModel().selectFirst();
     }
 
+    @FXML
+    void apagarHistorico(ActionEvent event) {
+        dao.excluir(obSelecionado);
+        atualizarTabelas();
+
+    }
+
+    public void clicarObjeto() {
+
+        obSelecionado = tbViewCalc.getItems().get(tbViewCalc.getSelectionModel().getFocusedIndex());
+    }
 }
