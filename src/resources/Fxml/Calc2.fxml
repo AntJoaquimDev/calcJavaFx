@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="445.0" prefWidth="339.0" style="-fx-background-color: #4F4F4F; -fx-border-color: #363636;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+   <children>
+      <Label layoutX="91.0" layoutY="15.0" prefHeight="19.0" prefWidth="143.0" text="Calculadora Java Fx" textFill="#eaeaeb">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnSete" layoutX="49.0" layoutY="176.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="7">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnOito" layoutX="118.0" layoutY="176.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="8">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnNove" layoutX="182.0" layoutY="176.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="9">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnQuatro" layoutX="49.0" layoutY="238.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="4">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCinco" layoutX="118.0" layoutY="238.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="5" textFill="#141414">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnSeis" layoutX="182.0" layoutY="238.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="6">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnDiv" layoutX="182.0" layoutY="121.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="/" textFill="#1e0579">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnUm" layoutX="49.0" layoutY="306.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="1">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnDois" layoutX="118.0" layoutY="306.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="2">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnTres" layoutX="182.0" layoutY="306.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="3">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnSubt" layoutX="248.0" layoutY="176.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="-" textFill="#270586">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnZero" layoutX="49.0" layoutY="370.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnPonto" layoutX="118.0" layoutY="370.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text=".">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnIgual" layoutX="182.0" layoutY="370.0" mnemonicParsing="false" onAction="#calcResultado" prefHeight="43.0" prefWidth="120.0" text="=" textFill="#eb0a0a">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnAdicao" layoutX="248.0" layoutY="238.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="52.0" text="+" textFill="#0d04b2">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnClear" layoutX="49.0" layoutY="121.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="120.0" text="CE" textFill="#e40303">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnMult" layoutX="248.0" layoutY="121.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="*" textFill="#22048d">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txfTelaCalc" alignment="CENTER_RIGHT" layoutX="44.0" layoutY="47.0" prefHeight="43.0" prefWidth="258.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
