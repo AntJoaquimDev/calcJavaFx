@@ -25,21 +25,16 @@ public class CrudGenecDao<T> { //CRUD generico
     }
 
     //buscar lista no banco e mostrar na tableview
-    public List<T> consultar(String descricao, String nomeClasse) {
+    public List<T> consultar( String nomeClasse) {
 
         List<T> lista = new ArrayList<>();
         Session session = ConexaoBanco.getSessionFcatory().openSession();
         session.beginTransaction();
 
-        // lista = session.createQuery("from TipoContato ").getResultList();
+        lista = session.createQuery(" from " + nomeClasse).getResultList();
         // -> esse comando seria para retornar td da tabela tds os registros
 
-        if (descricao.length() == 0) {
-            lista = session.createQuery(" from " + nomeClasse).getResultList();
-        } else {
-            lista = session.createQuery(" from " + nomeClasse+" tm where  tm.descricao like "
-                    + "'" + descricao + "%'").getResultList();
-        }
+
         session.getTransaction().commit(); //gtavar no banco
         session.close(); //encerrar conexao
 
