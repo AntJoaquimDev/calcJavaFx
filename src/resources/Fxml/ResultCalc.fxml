@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFE0; -fx-border-color: #00FF00;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controllerCalc">
    <children>
       <Label layoutX="130.0" layoutY="30.0" prefHeight="36.0" prefWidth="293.0" text="Histórico das Operações" textFill="#4103eb">
@@ -16,7 +15,7 @@
       </Label>
       <AnchorPane layoutX="6.0" layoutY="77.0" prefHeight="313.0" prefWidth="591.0" style="-fx-border-color: #32CD32;">
          <children>
-            <TableView fx:id="tbViewCalc" layoutX="-2.0" layoutY="-1.0" prefHeight="258.0" prefWidth="595.0" style="-fx-background-color: #F0F8FF; -fx-border-color: #32CD32;" />
+            <TableView fx:id="tbViewCalc" layoutX="-2.0" layoutY="-1.0" onMouseClicked="#clicarTabela" prefHeight="258.0" prefWidth="595.0" style="-fx-background-color: #F0F8FF; -fx-border-color: #32CD32;" />
             <Button fx:id="btnDeletar" layoutX="73.0" layoutY="264.0" mnemonicParsing="false" onAction="#apagarHistorico" prefHeight="25.0" prefWidth="327.0" text="Excluir Histórico" textFill="#eb0202">
                <font>
                   <Font name="System Bold Italic" size="19.0" />

@@ -98,7 +98,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <TextField fx:id="txfTelaCalc" alignment="CENTER_RIGHT" layoutX="36.0" layoutY="47.0" prefHeight="43.0" prefWidth="258.0">
+      <TextField fx:id="txfTelaCalc" alignment="CENTER_RIGHT" layoutX="36.0" layoutY="47.0" onKeyReleased="#clicarTelaTeclado" onMouseClicked="#clicarTela" prefHeight="43.0" prefWidth="258.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

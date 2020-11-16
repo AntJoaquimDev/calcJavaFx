@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import modelCalc.Calculadora;
 
@@ -100,11 +101,16 @@ public class controllerCalc implements Initializable {
     void apagarHistorico(ActionEvent event) {
         dao.excluir(obSelecionado);
         atualizarTabelas();
+    }
 
+    @FXML
+    void clicarTabela(MouseEvent event) {
+       // atualizarTabelas();
     }
 
     public void clicarObjeto() {
-
+        lista.clear();
         obSelecionado = tbViewCalc.getItems().get(tbViewCalc.getSelectionModel().getFocusedIndex());
+        atualizarTabelas();
     }
 }

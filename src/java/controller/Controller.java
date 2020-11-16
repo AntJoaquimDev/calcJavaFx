@@ -3,8 +3,6 @@ package controller;
 import calUltil.MaskCampoCalc;
 import calUltil.ValidarCampos;
 import calcDao.CrudGenecDao;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,12 +12,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import modelCalc.Calculadora;
-import sun.font.DelegatingShape;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -76,7 +74,6 @@ public class Controller implements Initializable {
     @FXML
     private Button btnMult;
 
-
     @FXML
     private TextField txfTelaCalc;
     Calculadora calc = new Calculadora();
@@ -87,13 +84,21 @@ public class Controller implements Initializable {
     double valor2 = 0;
 
 
-
     private CrudGenecDao<Calculadora> dao = new CrudGenecDao<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        focusTela();
         masckCamp();
+        clicarTelaTeclado();
+        focusTela();
+
+        btnPonto.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                txfTelaCalc.setText(txfTelaCalc.getText()+ ".");
+            }
+        });
+
         btnUm.setOnAction(new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {
@@ -105,6 +110,7 @@ public class Controller implements Initializable {
         btnDois.setOnAction(new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {
+                ValidarCampos.checarCampoVazio();
                 txfTelaCalc.setText(txfTelaCalc.getText() + "2");
                 limparTootip();
             }
@@ -112,6 +118,7 @@ public class Controller implements Initializable {
         btnTres.setOnAction(new EventHandler<ActionEvent>() {
 
             public void handle(ActionEvent event) {
+                ValidarCampos.checarCampoVazio();
                 txfTelaCalc.setText(txfTelaCalc.getText() + "3");
                 limparTootip();
             }
@@ -216,10 +223,13 @@ public class Controller implements Initializable {
         });
     }
 
+    private void clicarTelaTeclado() {
+        masckCamp();
+    }
 
 
     @FXML
-    void buscarHistoricos(ActionEvent event) throws Exception{
+    void buscarHistoricos(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/Fxml/ResultCalc.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
@@ -228,7 +238,6 @@ public class Controller implements Initializable {
         stage.setScene(scene);
         stage.show();
         btnHistorico.getScene().getWindow().hide();
-
     }
 
     @FXML
@@ -269,6 +278,7 @@ public class Controller implements Initializable {
     }
 
     public void masckCamp() {
+      //  MascarsCampo.mskNumero(tfTelef1);
         MaskCampoCalc.mskNumero(txfTelaCalc);
     }
 
@@ -282,22 +292,29 @@ public class Controller implements Initializable {
         valor2 = 0;
         operacao = "";
         txfTelaCalc.requestFocus();
-
     }
-
-    public void SalvarHistorico(){
+    public void SalvarHistorico() {
 
         calc.setValor1(valor1);
         calc.setValor2(valor2);
         calc.setOperacao(operacao);
         calc.setResultado(resultado);
-       if ( dao.salvar(calc)){
+        if (dao.salvar(calc)) {
             System.out.println("registro salvo");
-        }else{
+        } else {
             System.out.println("erro registro no salvou");
         }
+    }
+    @FXML
+    public void clicarTela(MouseEvent event) {
+         //asckCamp();
+        System.out.println("clicou tela");
+    }
 
-
+    @FXML
+    private void  clicarTelaTeclado(KeyEvent event) {
+        masckCamp();
+        System.out.println("clicou tela");
     }
 }
 

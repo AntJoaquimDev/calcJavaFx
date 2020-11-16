@@ -16,14 +16,13 @@ public class MaskCampoCalc {
     }
 
     public static void mskNumero(TextField textField) {
-
         MaskCampoCalc.limitarTamanho(textField, 16);
         textField.lengthProperty().addListener((observable, oldValue, newValue) -> {
             Locale.setDefault(Locale.US);
 
             String textDigitado = textField.getText();
             textDigitado = textDigitado.replaceAll("[^0-9]", ""); //expressao regular
-            textField.setText(String.format("%00,0f",textDigitado));
+            textField.setText(String.format("%00,0f", textDigitado));
             MaskCampoCalc.posionarCursor(textField);
         });
     }
